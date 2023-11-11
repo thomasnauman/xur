@@ -7,7 +7,7 @@ def extract_xur_location(html_content):
     soup = BeautifulSoup(html_content, 'html.parser')
 
     location_element = soup.find('h4', class_='title')
-    
+
     if location_element:
         location = location_element.text.strip()
         return location
@@ -22,8 +22,13 @@ def extract_exotic_items(html_content):
 
     for container in item_containers:
         item_name = container.find('h4', class_='et_pb_module_header').text.strip()
-        item_description = container.find('div', class_='et_pb_blurb_description').text.strip()
         
+        # Check if the item_name is "Hawkmoon" and skip it
+        if item_name.lower() == "hawkmoon":
+            continue
+
+        item_description = container.find('div', class_='et_pb_blurb_description').text.strip()
+
         item_element = ET.SubElement(root, "ExoticItem")
         name_element = ET.SubElement(item_element, "Name")
         name_element.text = item_name
