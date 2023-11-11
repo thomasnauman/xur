@@ -1,4 +1,4 @@
-# xur
+# Xûr
 A program for UNIX systems to check the inventory of Xûr, Agent of The Nine in Destiny 2
 
 This project can be executed using the "xur.sh" script. It contains four main components:
